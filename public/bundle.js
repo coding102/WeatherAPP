@@ -24905,6 +24905,11 @@
 	    },
 
 	    render: function render() {
+	        var _state = this.state;
+	        var temp = _state.temp;
+	        var location = _state.location;
+
+
 	        return React.createElement(
 	            'div',
 	            null,
@@ -24914,7 +24919,7 @@
 	                'Weather Component'
 	            ),
 	            React.createElement(WeatherForm, { onSearch: this.handleSearch }),
-	            React.createElement(WeatherMessage, null)
+	            React.createElement(WeatherMessage, { temp: temp, location: location })
 	        );
 	    }
 	});
@@ -24971,12 +24976,18 @@
 	    displayName: 'WeatherMessage',
 
 	    render: function render() {
+	        var _props = this.props;
+	        var temp = _props.temp;
+	        var location = _props.location;
+
+
 	        return React.createElement(
 	            'h3',
 	            null,
 	            'It is ',
-	            this.state,
-	            ' in Philadelphia'
+	            temp,
+	            ' in ',
+	            location
 	        );
 	    }
 	});
