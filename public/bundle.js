@@ -24893,14 +24893,15 @@
 
 	    getInitialState: function getInitialState() {
 	        return {
-	            location: 'Miami',
-	            temp: 88
+	            isLoading: false
 	        };
 	    },
 
 	    handleSearch: function handleSearch(location) {
 	        // this binding gets lost inside function, resolve with
 	        var that = this;
+
+	        this.setState({ isLoading: true });
 
 	        openWeatherMap.getTemp(location).then(function (temp) {
 	            that.setState({
@@ -24914,9 +24915,22 @@
 
 	    render: function render() {
 	        var _state = this.state;
+	        var isLoading = _state.isLoading;
 	        var temp = _state.temp;
 	        var location = _state.location;
 
+
+	        function renderMessage() {
+	            if (isLoading) {
+	                return React.createElement(
+	                    'h3',
+	                    null,
+	                    'Fetching weather...'
+	                );
+	            } else if (temp && location) {
+	                return React.createElement(WeatherMessage, { temp: temp, location: location });
+	            }
+	        }
 
 	        return React.createElement(
 	            'div',
@@ -24927,7 +24941,7 @@
 	                'Weather Component'
 	            ),
 	            React.createElement(WeatherForm, { onSearch: this.handleSearch }),
-	            React.createElement(WeatherMessage, { temp: temp, location: location })
+	            renderMessage()
 	        );
 	    }
 	});
