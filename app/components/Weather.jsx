@@ -19,9 +19,13 @@ var Weather = React.createClass({
         openWeatherMap.getTemp(location).then(function (temp) {
             that.setState({
                 location: location,
-                temp: temp
+                temp: temp,
+                // start loading indicator on search
+                isLoading: false
             });
         }, function (errorMessage) {
+            // stop loading indicator if error...
+            that.setState({isLoading: false});
             alert(errorMessage);
         })
     },
