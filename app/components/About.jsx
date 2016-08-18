@@ -11,8 +11,23 @@ var React = require('react');
 var About = (prop) => {
     return (
         <div>
-            <h3>About</h3>
-            <p>Welcome to the About Page!</p>
+            <h1 className="text-center">About</h1>
+            <p>This is a React web application featuring React JS, React-Router, Webpack, Babel, Foundation, and the OpenWeatherMap API</p>
+            <p>
+                Credits:
+            </p>
+
+            <ul>
+                <li>
+                    <a href="https://facebook.github.io/react">React</a>
+                </li>
+                <li>
+                    <a href="http://openweathermap.org">Open Weather Map</a>
+                </li>
+                <li>
+                    <a href="http://foundation.zurb.com/">Foundation</a>
+                </li>
+            </ul>
         </div>
     )
 };
