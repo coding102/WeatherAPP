@@ -11,7 +11,7 @@ var React = require('react');
 var About = (prop) => {
     return (
         <div>
-            <h1 className="text-center">About</h1>
+            <h1 className="text-center page-title">About</h1>
             <p>This is a React web application featuring React JS, React-Router, Webpack, Babel, Foundation, and the OpenWeatherMap API</p>
             <p>
                 Credits:
